@@ -24,7 +24,7 @@ const contactLinks = [
   {
     label: 'GitHub',
     value: 'T. Indris Andina',
-    href: 'https://github.com/TIndris',
+    href: 'https://github.com/Indris2003',
     icon: FaGithub,
   },
 ]
