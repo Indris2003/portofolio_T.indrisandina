@@ -16,6 +16,13 @@ dist-ssr
 .env.*
 !.env.example
 
+# Assets and documents
+src/assets/
+
+# Keep the public favicon if needed
+!public/favicon.svg
+!public/icons.svg
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
