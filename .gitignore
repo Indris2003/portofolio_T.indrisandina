@@ -16,8 +16,6 @@ dist-ssr
 .env.*
 !.env.example
 
-# Assets and documents
-src/assets/
 
 # Keep the public favicon if needed
 !public/favicon.svg
