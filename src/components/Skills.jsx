@@ -21,7 +21,6 @@ function Skills() {
   return (
     <section className="content-section" id="skills">
       <div className="section-heading">
-        <p className="eyebrow">Skills</p>
         <h2>Technical Skills</h2>
       </div>
 

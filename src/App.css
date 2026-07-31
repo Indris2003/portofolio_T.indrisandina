@@ -10,10 +10,11 @@
   z-index: 10;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-  padding: 16px 20px;
-  margin-bottom: 28px;
+  justify-content: center;   /* ganti dari space-between */
+  padding: 14px 28px;        /* padding horizontal lebih nyaman untuk pil kecil */
+  margin: 0 auto 28px;       /* auto agar pil ke-center di dalam .portfolio-shell */
+  width: fit-content;        /* lebar mengikuti konten, tidak lagi full width */
+  max-width: calc(100% - 32px);
   border: 1px solid var(--border);
   border-radius: 999px;
   background: rgba(11, 16, 32, 0.72);
@@ -102,144 +103,113 @@
   transform: translateY(-2px);
 }
 
-.hero-section,
-.content-section,
-.footer {
-  border: 1px solid var(--border);
-  background: var(--panel);
-  backdrop-filter: blur(18px);
-  box-shadow: var(--shadow);
-}
-
+/* ===== HERO SECTION (desktop default) ===== */
 .hero-section {
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  gap: 40px;
-  padding: 34px;
-  border-radius: var(--radius-lg);
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 24px;
+  padding: clamp(20px, 4vw, 40px) 0 24px;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
 }
 
 .hero-copy {
   display: grid;
-  align-content: center;
+  align-content: start;
   gap: 18px;
-}
-
-.eyebrow {
-  margin: 0;
-  color: var(--accent-2);
-  text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.8rem;
-  font-weight: 700;
-}
-
-.hero-section h1,
-.section-heading h2,
-.project-card h3 {
-  margin: 0;
-  color: var(--text-strong);
-  line-height: 1.1;
-}
-
-.hero-section h1 {
-  font-size: clamp(2.4rem, 5vw, 4.5rem);
-  max-width: 12ch;
-}
-
-.hero-text,
-.about-grid p,
-.project-card p,
-.contact-box p,
-.footer p {
-  color: var(--muted);
-}
-
-.hero-text-secondary {
-  max-width: 62ch;
+  position: relative;
+  z-index: 2;
+  max-width: 760px;
 }
 
 .hero-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 12px;
   margin-top: 6px;
-}
-
-.button {
-  padding: 13px 18px;
-  border: 1px solid transparent;
-}
-
-.button-primary {
-  background: linear-gradient(135deg, var(--accent), var(--accent-2));
-  color: #fff;
-}
-
-.button-secondary {
-  border-color: var(--border);
-  color: var(--text-strong);
-  background: rgba(255, 255, 255, 0.03);
 }
 
 .hero-stats {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 12px;
-  margin-top: 8px;
+  margin-top: 4px;
 }
 
-.hero-stats div,
-.skill-pill,
-.project-card,
-.contact-box {
+.hero-stats > div {
+  padding: 14px 12px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
+  border-radius: 16px;
   background: rgba(255, 255, 255, 0.03);
-}
-
-.hero-stats div {
-  padding: 14px;
+  display: grid;
+  gap: 4px;
 }
 
 .hero-stats strong {
-  display: block;
   color: var(--text-strong);
-  font-size: 1.2rem;
+  font-size: 1.05rem;
 }
 
 .hero-stats span {
   color: var(--muted);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
 }
 
 .hero-visual {
+  position: relative;
   display: grid;
-  place-items: center;
+  justify-items: center;
+  align-content: start;
+  min-height: auto;
+  padding-left: 0;
+  isolation: isolate;
 }
 
-.hero-card {
-  width: 100%;
-  padding: 18px;
-  border-radius: var(--radius-md);
-  background: linear-gradient(
-    180deg,
-    rgba(124, 92, 255, 0.14),
-    rgba(0, 212, 255, 0.08)
-  );
+.hero-name {
+  position: absolute;
+  left: 50%;
+  top: 10%;
+  transform: translateX(-50%);
+  z-index: 1;
+  margin: 0;
+  font-size: clamp(1.7rem, 4.4vw, 2.8rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  line-height: 0.9;
+  color: #ffffff;
+  text-shadow: none;
+  pointer-events: none;
+  text-align: center;
+  white-space: nowrap;
+  font-family: "Poppins", "Segoe UI", sans-serif;
 }
 
-.hero-card img {
-  width: 100%;
+.hero-photo {
+  position: relative;
+  z-index: 2;
+  width: min(100%, 520px);
+  max-width: 520px;
   aspect-ratio: 4 / 5;
-  object-fit: cover;
-  border-radius: 18px;
+  object-fit: contain;
+  object-position: center;
+  border-radius: 0;
+  box-shadow: none;
+  transform: none;
+  border: none;
+  background: transparent;
+  padding: 0;
 }
 
 .content-section {
   margin-top: 24px;
   padding: 28px 30px;
   border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.02);
 }
 
 .section-heading {
@@ -259,8 +229,28 @@
   gap: 16px;
 }
 
+/* .about-card-wrap TIDAK diberi border/background sendiri —
+   .content-section sudah jadi bingkai luar, sama seperti
+   Experience (.timeline) dan Skills (.skill-groups) yang juga
+   langsung duduk di dalam .content-section tanpa card ekstra. */
+.about-card-wrap {
+  display: block;
+}
+
 .about-grid {
   grid-template-columns: repeat(2, minmax(0, 1fr));
+  align-items: start;
+  gap: 16px;
+}
+
+.about-grid > p {
+  grid-column: 1 / -1;
+  margin: 0;
+  padding: 20px 22px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--muted);
 }
 
 .about-card {
@@ -270,6 +260,15 @@
   background: rgba(255, 255, 255, 0.03);
   display: grid;
   gap: 8px;
+}
+
+.about-card-full {
+  grid-column: 1 / -1;
+}
+
+.about-card-full p {
+  margin: 0;
+  color: var(--muted);
 }
 
 .about-card-label,
@@ -332,7 +331,9 @@
 }
 
 .skill-list {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .skill-groups {
@@ -352,62 +353,214 @@
 }
 
 .skill-pill {
-  padding: 16px 18px;
-  text-align: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;          /* lebar mengikuti teks, sama seperti pill navbar */
+  padding: 10px 16px;
+  font-size: 0.92rem;
   font-weight: 600;
   color: var(--text-strong);
+  border: 1px solid var(--border);
+  border-radius: 999px;        /* rounded penuh seperti navbar */
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background 180ms ease;
 }
 
+.skill-pill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(124, 92, 255, 0.45);
+  background: rgba(124, 92, 255, 0.12);
+}
+
+/* ===== PROJECT SECTION ===== */
 .project-grid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  display: grid;
+  /* 
+    Ubah bagian ini: 
+    Minimal lebar 280px, maksimal 480px per kartu. 
+    Ini akan mencegah kartu menjadi terlalu raksasa di desktop.
+  */
+  grid-template-columns: repeat(2, minmax(280px, 480px)); 
+  
+  /* Posisikan grid di tengah agar seimbang di kiri dan kanan */
+  justify-content: center; 
+  
+  gap: 32px; /* Sedikit memperbesar jarak antar kartu agar lebih lega */
+  align-items: stretch;
 }
 
 .project-card {
-  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 16px); /* Memberikan bentuk kartu yang rapi */
+  background: rgba(255, 255, 255, 0.03); /* Latar belakang transparan tipis */
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  height: 100%; /* Memaksa kartu memenuhi grid */
+}
+
+/* Efek interaktif saat kartu di-hover */
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 92, 255, 0.45);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
 }
 
 .project-media {
-  margin-bottom: 16px;
+  margin-bottom: 20px;
   overflow: hidden;
-  border-radius: 18px;
+  border-radius: 12px;
   border: 1px solid var(--border);
   background: rgba(255, 255, 255, 0.04);
 }
 
 .project-media img {
+  display: block;
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
+  transition: transform 400ms ease;
 }
 
-.project-tag {
-  display: inline-flex;
-  margin-bottom: 14px;
-  color: var(--accent-2);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
+/* Efek zoom halus pada gambar saat kartu di-hover */
+.project-card:hover .project-media img {
+  transform: scale(1.05);
+}
+
+/* ===== PROJECT SECTION ===== */
+.project-grid {
+  display: grid;
+  /* 2 Baris Kiri-Kanan yang rapi di tengah */
+  grid-template-columns: repeat(2, minmax(280px, 480px)); 
+  justify-content: center; 
+  gap: 32px; 
+  align-items: stretch;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 16px);
+  background: rgba(255, 255, 255, 0.03);
+  transition: transform 200ms ease, border-color 200ms ease, box-shadow 200ms ease;
+  height: 100%; 
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(124, 92, 255, 0.45);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+}
+
+.project-media {
+  margin-bottom: 20px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.project-media img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  transition: transform 400ms ease;
+}
+
+.project-card:hover .project-media img {
+  transform: scale(1.05);
+}
+
+/* Behavior block agar ukuran <a> sama dengan <div> pada gambar */
+.project-media.is-link {
+  display: block;
+  cursor: pointer;
+}
+
+.project-card:hover .project-media.is-link {
+  border-color: rgba(124, 92, 255, 0.45);
 }
 
 .project-card h3 {
-  margin-bottom: 10px;
+  margin: 0 0 12px 0;
   font-size: 1.35rem;
+  color: var(--text-strong);
+  line-height: 1.3;
+}
+
+.project-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  flex-grow: 1; /* Mendorong pil tag selalu ke paling bawah */
+}
+
+/* Tombol bawah (pil teknologi) */
+.project-tech-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start;
+  margin-top: 24px;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--accent-2); 
+  background: rgba(255, 255, 255, 0.03);
+  font-weight: 700;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* Pastikan Media Query Mobile Tetap Ada di paling bawah file CSS */
+@media (max-width: 960px) {
+  .project-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card h3 {
+  margin: 0 0 12px 0;
+  font-size: 1.35rem;
+  color: var(--text-strong);
+  line-height: 1.3;
+}
+
+.project-card p {
+  margin: 0;
+  color: var(--muted);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  /* flex-grow: 1 adalah kunci rahasianya! 
+     Ini akan mendorong tombol 'Live Demo' selalu ke posisi paling bawah 
+     walaupun teks deskripsinya pendek atau gambarnya tidak ada. */
+  flex-grow: 1; 
 }
 
 .project-demo {
   display: inline-flex;
-  margin-top: 16px;
-  padding: 11px 16px;
+  align-items: center;
+  justify-content: center;
+  align-self: flex-start; /* Agar tombol tidak melebar sepenuh kartu */
+  margin-top: 24px;
+  padding: 10px 20px;
   border-radius: 999px;
   border: 1px solid var(--border);
   color: var(--text-strong);
   background: rgba(255, 255, 255, 0.03);
   font-weight: 600;
-  transition:
-    transform 180ms ease,
-    border-color 180ms ease,
-    background 180ms ease;
+  font-size: 0.9rem;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
 .project-demo:hover,
@@ -415,6 +568,37 @@
   transform: translateY(-2px);
   border-color: rgba(124, 92, 255, 0.45);
   background: rgba(124, 92, 255, 0.12);
+}
+
+@media (max-width: 960px) {
+  .project-grid {
+    grid-template-columns: 1fr; /* Menjadi 1 baris 1 project saat di HP/Tablet */
+  }
+}
+
+/* Container untuk membungkus banyak tag */
+.project-tags-container {
+  display: flex;
+  flex-wrap: wrap; /* Otomatis turun ke baris baru jika kepanjangan */
+  gap: 8px; /* Jarak antar tag */
+  margin-top: 24px;
+}
+
+/* Tombol bawah (pil teknologi) */
+.project-tech-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  /* margin-top: 24px; Dihapus karena margin sudah diurus oleh container */
+  padding: 6px 14px; /* Sedikit dikecilkan paddingnya agar kalau 2 tag tidak terlalu penuh */
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  color: var(--accent-2); 
+  background: rgba(255, 255, 255, 0.03);
+  font-weight: 700;
+  font-size: 0.78rem; /* Font sedikit diperkecil agar rapi */
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
 }
 
 .contact-box {
@@ -569,16 +753,55 @@
   background: rgba(255, 255, 255, 0.06);
 }
 
+/* ===== SEND MESSAGE BUTTON (PROFESSIONAL GREEN) ===== */
 .contact-submit {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   gap: 10px;
-  width: fit-content;
+  padding: 12px 32px;
   border: none;
+  border-radius: 999px; /* Membuat bentuk pil (pill) yang elegan */
+  
+  /* Warna utama hijau emerald yang profesional */
+  background: #10b981; 
+  color: #ffffff;
+  
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
   cursor: pointer;
+  
+  /* Memberikan bayangan halus berwarna hijau */
+  box-shadow: 0 4px 14px rgba(16, 185, 129, 0.3); 
+  transition: all 200ms ease;
 }
 
+/* Efek saat kursor diarahkan (Hover) */
+.contact-submit:hover:not(:disabled) {
+  background: #059669; /* Warna hijau menjadi sedikit lebih gelap */
+  transform: translateY(-2px); /* Tombol sedikit terangkat */
+  box-shadow: 0 6px 20px rgba(16, 185, 129, 0.45); /* Bayangan sedikit melebar */
+}
+
+/* Efek saat tombol diklik (Active) */
+.contact-submit:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+}
+
+/* Tampilan saat tombol tidak bisa diklik (Loading/Disabled) */
 .contact-submit:disabled {
-  cursor: progress;
-  opacity: 0.82;
+  background: #047857; /* Warna lebih redup */
+  cursor: not-allowed;
+  opacity: 0.7;
+  box-shadow: none;
+  transform: none;
+}
+
+/* Menyesuaikan ukuran ikon di dalam tombol */
+.contact-submit svg {
+  font-size: 1.1rem;
 }
 
 .spin {
@@ -618,15 +841,16 @@
 }
 
 @media (max-width: 960px) {
-  .navbar,
-  .contact-box {
-    border-radius: 24px;
+  .navbar {
+    width: fit-content;
+    max-width: calc(100% - 32px);
+    flex-wrap: wrap;
+    justify-content: center;
   }
+}
 
   .navbar,
   .about-grid,
-  .project-grid,
-  .skill-list,
   .hero-section,
   .contact-box {
     grid-template-columns: 1fr;
@@ -705,4 +929,275 @@
   .contact-submit {
     width: 100%;
   }
+
+  /* ===== HERO SECTION (mobile override) =====
+     Foto tidak lagi di dalam "card": tanpa background/padding kartu.
+     Nama tampil sebagai judul biasa DI ATAS foto. */
+  .hero-visual {
+    display: grid;
+    order: -1; /* foto + nama tampil sebelum teks copy */
+    min-height: auto;
+    padding-left: 0;
+  }
+
+  @media (max-width: 640px) {
+  .hero-name {
+    position: static;
+    left: auto;         /* tambahkan ini */
+    transform: none;    /* tambahkan ini */
+    order: -1;
+    z-index: auto;
+    color: var(--text-strong);
+    font-size: clamp(1.6rem, 7vw, 2.2rem);
+    text-align: center;
+    white-space: normal;
+    margin-bottom: 10px;
+    pointer-events: auto;
+  }
+}
+
+  .hero-photo {
+    order: 2;
+    transform: none;
+    width: min(100%, 360px);
+  }
+}
+
+/* ===== SCROLL TO TOP BUTTON ===== */
+.scroll-to-top-btn {
+  position: fixed;
+  bottom: 40px;
+  right: 40px;
+  z-index: 999;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(124, 92, 255, 0.45);
+  background: rgba(11, 16, 32, 0.8);
+  backdrop-filter: blur(8px);
+  color: var(--accent-2, #a78bfa); /* Sesuaikan dengan warna aksen Anda */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  transition: transform 200ms ease, background 200ms ease, border-color 200ms ease;
+}
+
+.scroll-to-top-btn svg {
+  width: 24px;
+  height: 24px;
+  transition: transform 200ms ease;
+}
+
+/* Efek Hover */
+.scroll-to-top-btn:hover {
+  transform: translateY(-5px);
+  background: rgba(124, 92, 255, 0.15);
+  border-color: rgba(124, 92, 255, 0.8);
+}
+
+.scroll-to-top-btn:hover svg {
+  transform: translateY(-2px);
+}
+
+/* Posisi di Mobile (HP) agar tidak terlalu ke tengah */
+@media (max-width: 768px) {
+  .scroll-to-top-btn {
+    bottom: 24px;
+    right: 24px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+/* ===== MODAL CONTACT FORM ===== */
+.modal-overlay {
+  /* Mengunci overlay persis seluas layar */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  
+  background: rgba(4, 8, 20, 0.85); /* Sedikit lebih gelap agar form lebih menonjol */
+  backdrop-filter: blur(8px);
+  z-index: 99999; /* Dipastikan paling atas, menutupi navbar */
+  
+  /* KUNCI UTAMA CENTERING */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.modal-content {
+  background: #0b1020;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg, 24px);
+  padding: 32px;
+  width: 100%;
+  max-width: 500px;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.5);
+  position: relative;
+  
+  /* --- PERBAIKAN DI SINI --- */
+  margin: 0; /* Hapus margin: auto agar flexbox berfungsi sempurna */
+  
+  /* Membatasi tinggi maksimal form 85% dari layar, 
+     sehingga PASTI ada ruang kosong (jarak) di atas dan bawah form */
+  max-height: 85vh; 
+  
+  /* Jika form lebih panjang dari 85% layar, scroll akan muncul di dalam form */
+  overflow-y: auto; 
+  
+  animation: slideUp 0.4s ease-out;
+}
+
+/* Mempercantik Scrollbar di dalam modal (Opsional tapi elegan) */
+.modal-content::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+.modal-content::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+}
+
+/* Pastikan box-sizing aktif agar padding tidak menambah ukuran */
+.modal-content, .modal-content * {
+  box-sizing: border-box;
+}
+
+/* === Sembunyikan Tombol ScrollToTop === */
+body.modal-open .scroll-to-top-btn {
+  display: none !important;
+}
+
+/* Penyesuaian khusus untuk Mobile (HP) */
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 16px;
+  }
+  .modal-content {
+    padding: 24px 20px;
+    max-height: 90vh; /* Di HP bisa sedikit lebih tinggi */
+  }
+}
+
+/* Header Modal */
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-strong);
+}
+
+/* Tombol Close */
+.close-modal-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--border);
+  color: var(--muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex; /* Ganti dari grid agar ikon persis di tengah */
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.close-modal-btn:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Penyesuaian khusus untuk Mobile (HP) */
+@media (max-width: 640px) {
+  .modal-overlay {
+    padding: 16px; /* Jarak layar HP sedikit dikecilkan */
+  }
+  
+  .modal-content {
+    padding: 24px 20px;
+    margin: auto; /* Tetap pertahankan auto margin */
+  }
+}
+
+.close-modal-btn:hover {
+  background: rgba(239, 68, 68, 0.15); /* Merah transparan saat hover */
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+/* Keyframes untuk Animasi Pop-up */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0;
+    transform: translateY(30px) scale(0.95); 
+  }
+  to { 
+    opacity: 1;
+    transform: translateY(0) scale(1); 
+  }
+}
+
+/* Penyesuaian di Layar Kecil (HP) */
+@media (max-width: 640px) {
+  .modal-content {
+    padding: 24px 20px;
+  }
+}
+
+/* ===== TYPING CURSOR ANIMATION ===== */
+.typing-cursor {
+  display: inline-block;
+  color: var(--accent-2, #a78bfa); /* Menggunakan warna aksen Anda */
+  font-weight: 300;
+  margin-left: 2px;
+  animation: blinkCursor 0.8s step-end infinite;
+}
+
+@keyframes blinkCursor {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ===== SCROLL REVEAL ANIMATION ===== */
+.reveal-section {
+  /* Kondisi awal: Transparan dan posisinya turun 40px ke bawah */
+  opacity: 0;
+  transform: translateY(40px);
+  
+  /* Transisi yang sangat halus (ease-out) selama 0.8 detik */
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  
+  /* Mengatur agar komponen tidak berantakan */
+  width: 100%;
+  will-change: opacity, transform;
+}
+
+.reveal-section.is-visible {
+  /* Kondisi akhir: Terlihat jelas dan kembali ke posisi normal */
+  opacity: 1;
+  transform: translateY(0);
 }

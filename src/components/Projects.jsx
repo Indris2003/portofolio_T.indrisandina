@@ -8,26 +8,28 @@ const projects = [
       'Online field booking system built with MERN Stack, featuring scheduling, availability, booking, payment workflows, authentication, and MongoDB optimization.',
     image: diazSportImage,
     demo: 'https://tugasakhir-chi.vercel.app/',
-    tag: 'MERN Stack',
+    // Ubah menjadi array
+    tags: ['MongoDB', 'Express.js', 'React.js', 'Node.js'], 
   },
   {
     title: 'Si-Pidana-Q',
-    description: 'Integrated Qanun case information system for Banda Aceh Satpol PP & WH, using Google Sheets, Google Drive, and Google Apps Script automation.',
+    description: 'Integrated Qanun case information system for Banda Aceh Satpol PP & WH.',
     image: sipidanaImage,
     demo: 'https://script.google.com/macros/s/AKfycbxqz9bk9fK5jFXsTxcKkNlut7eIZi6I9M3LYlj-1nAVIATi3LkR9CKmggUCVIZDyB-Z/exec',
-    tag: 'Automation',
+    // Bisa 2 tag atau lebih
+    tags: ['Google Apps Script', 'Google Spreadsheet', 'Google Drive'], 
   },
   {
     title: 'PPKS & TKSK',
     description:
       'Social welfare service requirement system for Aceh Social Services Office with role-based access, approval workflows, and data validation.',
-    tag: 'Express.js',
+     tags: ['MongoDB', 'Express.js', 'React.js', 'Node.js'],
   },
   {
     title: 'Semaroam',
     description:
       'Tourism recommendation application for Semarang that integrates machine learning categorization, attraction history, and visitor ratings.',
-    tag: 'Android',
+    tags: ['Android', 'Kotlin'],
   },
 ]
 
@@ -35,26 +37,47 @@ function Projects() {
   return (
     <section className="content-section" id="projects">
       <div className="section-heading">
-        <p className="eyebrow">Projects</p>
-        <h2>Selected Projects</h2>
+        <h2>Projects</h2>
       </div>
 
       <div className="project-grid">
         {projects.map((project) => (
           <article className="project-card" key={project.title}>
+            
+            {/* GAMBAR MENJADI LINK JIKA ADA DEMO */}
             {project.image ? (
-              <div className="project-media">
-                <img src={project.image} alt={project.title} />
-              </div>
+              project.demo ? (
+                <a 
+                  className="project-media is-link" 
+                  href={project.demo} 
+                  target="_blank" 
+                  rel="noreferrer"
+                  title={`View live demo for ${project.title}`}
+                >
+                  <img src={project.image} alt={project.title} />
+                </a>
+              ) : (
+                <div className="project-media">
+                  <img src={project.image} alt={project.title} />
+                </div>
+              )
             ) : null}
-            <span className="project-tag">{project.tag}</span>
+
+            {/* Judul dan Deskripsi */}
             <h3>{project.title}</h3>
             <p>{project.description}</p>
-            {project.demo ? (
-              <a className="project-demo" href={project.demo} target="_blank" rel="noreferrer">
-                Live Demo
-              </a>
+            
+            {/* RENDER BANYAK TAG SEKALIGUS */}
+            {project.tags && project.tags.length > 0 ? (
+              <div className="project-tags-container">
+                {project.tags.map((tag, index) => (
+                  <span className="project-tech-pill" key={index}>
+                    {tag}
+                  </span>
+                ))}
+              </div>
             ) : null}
+            
           </article>
         ))}
       </div>

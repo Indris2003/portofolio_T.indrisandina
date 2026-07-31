@@ -29,6 +29,13 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+html {
+  scroll-behavior: smooth;
+  
+  /* Karena Navbar Anda sticky, tambahkan ini agar saat di-scroll, 
+     judul section tidak tertutup oleh Navbar di bagian atas layar */
+  scroll-padding-top: 100px; 
+}
 
 body {
   margin: 0;

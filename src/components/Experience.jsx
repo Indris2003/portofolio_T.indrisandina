@@ -25,8 +25,7 @@ function Experience() {
   return (
     <section className="content-section" id="experience">
       <div className="section-heading">
-        <p className="eyebrow">Experience</p>
-        <h2>Pengalaman Profesional</h2>
+        <h2>Experience</h2>
       </div>
 
       <div className="timeline">
