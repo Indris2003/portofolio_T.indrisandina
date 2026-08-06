@@ -29,23 +29,35 @@ function Experience() {
       </div>
 
       <div className="timeline">
-        {experiences.map((experience) => (
-          <article className="timeline-item" key={`${experience.company}-${experience.role}`}>
-            <div className="timeline-meta">
-              <span>{experience.period}</span>
-            </div>
-            <div className="timeline-content">
-              <h3>{experience.company}</h3>
-              <p className="timeline-role">{experience.role}</p>
-              <ul>
-                {experience.points.map((point) => (
-                  <li key={point}>{point}</li>
-                ))}
-              </ul>
-            </div>
-          </article>
-        ))}
+  {experiences.map((experience, index) => (
+    <div
+      className="timeline-row"
+      key={`${experience.company}-${experience.role}`}
+    >
+      <div className="timeline-marker">
+        <span className="timeline-dot" />
+        {index !== experiences.length - 1 && (
+          <span className="timeline-line" />
+        )}
       </div>
+
+      <article className="timeline-item">
+        <div className="timeline-meta">
+          <span>{experience.period}</span>
+        </div>
+        <div className="timeline-content">
+          <h3>{experience.company}</h3>
+          <p className="timeline-role">{experience.role}</p>
+          <ul>
+            {experience.points.map((point) => (
+              <li key={point}>{point}</li>
+            ))}
+          </ul>
+        </div>
+      </article>
+    </div>
+  ))}
+</div>
     </section>
   )
 }

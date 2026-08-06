@@ -1,21 +1,64 @@
+import {
+  SiJavascript,
+  SiTypescript,
+  SiPhp,
+  SiKotlin,
+  SiHtml5,
+  SiCss,
+  SiNodedotjs,
+  SiExpress,
+  SiReact,
+  SiLaravel,
+  SiBootstrap,
+  SiTailwindcss,
+  SiMongodb,
+  SiPostgresql,
+  SiGit,
+  SiGithub,
+  SiPostman,
+} from "react-icons/si";
+import { TbApi } from "react-icons/tb";
+
 const skillGroups = [
   {
-    title: 'Programming Languages',
-    items: ['JavaScript', 'TypeScript', 'PHP', 'Kotlin', 'HTML', 'CSS'],
+    title: "Programming Languages",
+    items: [
+      { name: "JavaScript", icon: SiJavascript },
+      { name: "TypeScript", icon: SiTypescript },
+      { name: "PHP", icon: SiPhp },
+      { name: "Kotlin", icon: SiKotlin },
+      { name: "HTML", icon: SiHtml5 },
+      { name: "CSS", icon: SiCss },
+    ],
   },
   {
-    title: 'Backend',
-    items: ['Node.js', 'Express.js', 'RESTful APIs', 'JWT Authentication', 'Mongoose ODM'],
+    title: "Backend",
+    items: [
+      { name: "Node.js", icon: SiNodedotjs },
+      { name: "Express.js", icon: SiExpress },
+      { name: "RESTful APIs", icon: TbApi },
+    ],
   },
   {
-    title: 'Frontend',
-    items: ['React.js', 'Laravel', 'Bootstrap', 'Tailwind CSS'],
+    title: "Frontend",
+    items: [
+      { name: "React.js", icon: SiReact },
+      { name: "Laravel", icon: SiLaravel },
+      { name: "Bootstrap", icon: SiBootstrap },
+      { name: "Tailwind CSS", icon: SiTailwindcss },
+    ],
   },
   {
-    title: 'Databases & Tools',
-    items: ['MongoDB', 'PostgreSQL', 'Git', 'GitHub', 'Postman', 'Canva'],
+    title: "Databases & Tools",
+    items: [
+      { name: "MongoDB", icon: SiMongodb },
+      { name: "PostgreSQL", icon: SiPostgresql },
+      { name: "Git", icon: SiGit },
+      { name: "GitHub", icon: SiGithub },
+      { name: "Postman", icon: SiPostman },
+    ],
   },
-]
+];
 
 function Skills() {
   return (
@@ -28,18 +71,24 @@ function Skills() {
         {skillGroups.map((group) => (
           <article className="skill-group" key={group.title}>
             <h3>{group.title}</h3>
+
             <div className="skill-list">
-              {group.items.map((skill) => (
-                <span key={skill} className="skill-pill">
-                  {skill}
-                </span>
-              ))}
+              {group.items.map((skill) => {
+                const Icon = skill.icon;
+
+                return (
+                  <span key={skill.name} className="skill-pill">
+                    <Icon className="skill-pill-icon" size={18} />
+                    <span>{skill.name}</span>
+                  </span>
+                );
+              })}
             </div>
           </article>
         ))}
       </div>
     </section>
-  )
+  );
 }
 
-export default Skills
+export default Skills;
