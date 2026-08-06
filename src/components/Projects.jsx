@@ -38,116 +38,196 @@ const projects = [
   },
 ];
 
+
 function Projects() {
+
   const sliderRef = useRef(null);
 
+  const currentIndex = useRef(0);
+
+
+
   const handleSlide = (direction) => {
-    if (sliderRef.current) {
-      sliderRef.current.scrollBy({
-        left: direction === "next" ? 350 : -350,
-        behavior: "smooth",
-      });
+
+    const slider = sliderRef.current;
+
+    if (!slider) return;
+
+
+    const cards = slider.querySelectorAll(".project-card");
+
+    if (!cards.length) return;
+
+
+    const cardWidth = cards[0].offsetWidth;
+
+    const gap = 20;
+
+
+    if (direction === "next") {
+
+      currentIndex.current++;
+
+
+      if (currentIndex.current >= cards.length) {
+        currentIndex.current = 0;
+      }
+
+
+    } else {
+
+      currentIndex.current--;
+
+
+      if (currentIndex.current < 0) {
+        currentIndex.current = cards.length - 1;
+      }
+
     }
+
+
+
+    slider.scrollTo({
+
+      left:
+        currentIndex.current *
+        (cardWidth + gap),
+
+      behavior: "smooth",
+
+    });
+
   };
 
+
+
   return (
+
     <section className="content-section" id="projects">
+
 
       <div className="section-heading">
         <h2>Projects</h2>
       </div>
 
 
+
       <div className="project-slider-wrapper">
 
-        {/* BUTTON LEFT */}
+
         <button
           className="project-slide-btn prev"
           onClick={() => handleSlide("prev")}
-          aria-label="Previous project"
         >
           ‹
         </button>
 
 
-        <div className="project-grid" ref={sliderRef}>
+
+        <div
+          className="project-grid"
+          ref={sliderRef}
+        >
+
 
           {projects.map((project) => (
-            <article className="project-card" key={project.title}>
 
-              {/* IMAGE */}
-              {project.image ? (
+            <article
+              className="project-card"
+              key={project.title}
+            >
+
+
+              {project.image && (
+
                 project.demo ? (
+
                   <a
                     className="project-media is-link"
                     href={project.demo}
                     target="_blank"
                     rel="noreferrer"
-                    title={`View live demo for ${project.title}`}
                   >
+
                     <img
                       src={project.image}
                       alt={project.title}
                     />
+
                   </a>
+
+
                 ) : (
+
                   <div className="project-media">
+
                     <img
                       src={project.image}
                       alt={project.title}
                     />
+
                   </div>
+
                 )
-              ) : null}
+
+              )}
 
 
-              {/* TITLE */}
+
               <h3>
                 {project.title}
               </h3>
 
 
-              {/* DESCRIPTION */}
+
               <p>
                 {project.description}
               </p>
 
 
-              {/* TAGS */}
-              {project.tags && project.tags.length > 0 && (
-                <div className="project-tags-container">
 
-                  {project.tags.map((tag) => (
-                    <span
-                      className="project-tech-pill"
-                      key={tag}
-                    >
-                      {tag}
-                    </span>
-                  ))}
+              <div className="project-tags-container">
 
-                </div>
-              )}
+                {project.tags.map((tag) => (
+
+                  <span
+                    className="project-tech-pill"
+                    key={tag}
+                  >
+                    {tag}
+                  </span>
+
+                ))}
+
+              </div>
+
 
             </article>
+
           ))}
+
 
         </div>
 
 
-        {/* BUTTON RIGHT */}
+
+
         <button
           className="project-slide-btn next"
           onClick={() => handleSlide("next")}
-          aria-label="Next project"
         >
           ›
         </button>
 
+
+
       </div>
 
+
     </section>
+
   );
 }
+
 
 export default Projects;
