@@ -62,6 +62,15 @@ function Navbar() {
         </nav>
       </header>
 
+      {/* Mobile Topbar Brand & Availability Info */}
+      <div className="mobile-brand-box">
+        <span className="mobile-brand-title">Portfolio</span>
+        <span className="mobile-status-badge">
+          <span className="status-dot" />
+          Available for Opportunities
+        </span>
+      </div>
+
       {/* Mobile Right-aligned Hamburger Toggle Button */}
       <button
         className="hamburger-btn"
