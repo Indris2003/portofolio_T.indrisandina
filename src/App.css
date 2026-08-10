@@ -31,7 +31,11 @@
   box-shadow: none;
 }
 
-.mobile-brand-box {
+.mobile-brand-title {
+  display: none;
+}
+
+.hamburger-btn {
   display: none;
 }
 
@@ -275,6 +279,29 @@
   width: 100%;
 }
 
+.status-badge-hero-top {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 12px;
+}
+
+.status-badge-floating {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  padding: 5px 16px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #09090b;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
 .hero-photo {
   position: relative;
   z-index: 2;
@@ -284,17 +311,17 @@
   object-fit: cover;
   object-position: top center;
   border-radius: var(--radius-md, 20px);
-  box-shadow: none;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  background: #f4f4f5;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  background: #ffffff;
   padding: 0;
   filter: none;
-  transition: transform 300ms ease;
+  transition: transform 300ms ease, box-shadow 300ms ease;
 }
 
 .hero-photo:hover {
   transform: translateY(-4px);
-  box-shadow: none;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
 }
 
 .content-section {
@@ -1415,38 +1442,24 @@ body.modal-open .scroll-to-top-btn {
     align-items: center;
     width: 100%;
     position: relative;
-    margin-bottom: 16px;
-    padding: 4px 0;
+    margin-bottom: 8px;
+    padding: 0;
   }
 
-  .mobile-brand-box {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 3px;
+  .status-badge-desktop {
+    display: none;
   }
 
   .mobile-brand-title {
+    display: flex;
+    align-items: center;
+    height: 44px;
     color: #09090b;
-    font-size: 1.2rem;
+    font-size: 1.45rem;
     font-weight: 800;
     letter-spacing: -0.02em;
-    line-height: 1.1;
+    line-height: 1;
     font-family: var(--sans);
-  }
-
-  .mobile-status-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    padding: 3px 10px;
-    border-radius: 999px;
-    background: #f4f4f5;
-    border: 1px solid rgba(0, 0, 0, 0.08);
-    color: #09090b;
-    font-size: 0.7rem;
-    font-weight: 600;
-    letter-spacing: 0.01em;
   }
 
   .status-dot {
@@ -1641,12 +1654,34 @@ body.modal-open .scroll-to-top-btn {
   }
 
   /* ===== HERO SECTION (mobile override) ===== */
+  .hero-section {
+    margin-top: 0;
+  }
+
+  .status-badge-hero-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
   .hero-grid {
     grid-template-columns: 1fr;
-    gap: 24px;
-    padding: 28px 20px;
+    gap: 20px;
+    padding: 20px 16px;
     min-height: auto;
     text-align: center;
+  }
+
+  .status-badge-floating {
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 4px 12px;
+    font-size: 0.76rem;
+    background: #f4f4f5;
+    border: 1px solid rgba(0, 0, 0, 0.08);
   }
 
   .content-section {

@@ -42,6 +42,13 @@ function Hero() {
 
   return (
     <section className="hero-section" id="about" ref={heroRef}>
+      <div className="status-badge-hero-top">
+        <span className="status-badge-floating">
+          <span className="status-dot" />
+          Available for Opportunities
+        </span>
+      </div>
+
       <div id="home" className="hero-grid">
         <div className="hero-copy">
           <h1 className="hero-name">
