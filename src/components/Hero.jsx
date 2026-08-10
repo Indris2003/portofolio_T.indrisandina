@@ -50,17 +50,17 @@ function Hero() {
           </h1>
 
           <p className="hero-tagline">
-            Backend Developer • Fullstack Web Development
+            Software Developer | Specific in Web & App Development
           </p>
 
           <div className="hero-about-body">
             <p>
-              Informatics graduate from Universitas Syiah Kuala, focused on backend and fullstack web development.
-              I build scalable, secure web applications — from RESTful APIs and database design to server-side
-              architecture — with solid frontend skills to bring it all together.
+              Informatics graduate from Universitas Syiah Kuala, focused on web and mobile application development.
+              I build scalable, secure applications — from RESTful APIs and database design to server-side
+              architecture — with solid frontend and mobile skills to bring it all together.
             </p>
             <p>
-              Currently open to backend, fullstack, and web application opportunities where I can contribute to
+              Currently open to software developer, backend, and fullstack roles where I can contribute to
               real-world products, keep learning new technologies, and collaborate closely with cross-functional
               teams to ship reliable software.
             </p>
