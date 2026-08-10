@@ -64,6 +64,7 @@ function Skills() {
   return (
     <section className="content-section" id="skills">
       <div className="section-heading">
+        <span className="section-page-badge">SKILLS</span>
         <h2>Technical Skills</h2>
       </div>
 

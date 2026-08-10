@@ -17,13 +17,10 @@ function App() {
     <div className="portfolio-shell">
       <Navbar />
       <main>
-        {/* Hero tidak dibungkus karena sudah ada animasi ketiknya sendiri */}
+        {/* Hero & About dipadatkan dalam komponen Hero */}
         <Hero />
         
         {/* 2. Bungkus section lainnya dengan ScrollReveal */}
-        <ScrollReveal>
-          <About />
-        </ScrollReveal>
         
         <ScrollReveal>
           <Experience />

@@ -1,9 +1,32 @@
 import { useRef } from "react";
+import {
+  SiMongodb,
+  SiExpress,
+  SiReact,
+  SiNodedotjs,
+  SiGoogleappsscript,
+  SiGooglesheets,
+  SiGoogledrive,
+  SiAndroid,
+  SiKotlin,
+} from "react-icons/si";
 
 import sipidanaImage from "../assets/sipidana.png";
 import diazSportImage from "../assets/diazsport.png";
 import ppkstkImage from "../assets/tksk.png";
 import semaroamImage from "../assets/semaroamm.png";
+
+const techIconMap = {
+  "MongoDB": SiMongodb,
+  "Express.js": SiExpress,
+  "React.js": SiReact,
+  "Node.js": SiNodedotjs,
+  "Google Apps Script": SiGoogleappsscript,
+  "Google Spreadsheet": SiGooglesheets,
+  "Google Drive": SiGoogledrive,
+  "Android": SiAndroid,
+  "Kotlin": SiKotlin,
+};
 
 const projects = [
   {
@@ -103,127 +126,92 @@ function Projects() {
 
   return (
 
-    <section className="content-section" id="projects">
+    <section className="content-section section-dark" id="projects">
 
 
       <div className="section-heading">
-        <h2>Projects</h2>
+        <span className="section-page-badge">PROJECTS</span>
+        <h2>Featured Projects</h2>
       </div>
 
 
 
       <div className="project-slider-wrapper">
-
-
-        <button
-          className="project-slide-btn prev"
-          onClick={() => handleSlide("prev")}
-        >
-          ‹
-        </button>
-
-
-
         <div
           className="project-grid"
           ref={sliderRef}
         >
-
-
           {projects.map((project) => (
-
             <article
               className="project-card"
               key={project.title}
             >
-
-
               {project.image && (
-
                 project.demo ? (
-
                   <a
                     className="project-media is-link"
                     href={project.demo}
                     target="_blank"
                     rel="noreferrer"
                   >
-
                     <img
                       src={project.image}
                       alt={project.title}
                     />
-
                   </a>
-
-
                 ) : (
-
                   <div className="project-media">
-
                     <img
                       src={project.image}
                       alt={project.title}
                     />
-
                   </div>
-
                 )
-
               )}
-
-
 
               <h3>
                 {project.title}
               </h3>
 
-
-
               <p>
                 {project.description}
               </p>
 
-
-
               <div className="project-tags-container">
-
-                {project.tags.map((tag) => (
-
-                  <span
-                    className="project-tech-pill"
-                    key={tag}
-                  >
-                    {tag}
-                  </span>
-
-                ))}
-
+                {project.tags.map((tag) => {
+                  const Icon = techIconMap[tag];
+                  return (
+                    <span
+                      className="project-tech-pill"
+                      key={tag}
+                    >
+                      {Icon ? <Icon className="project-tech-icon" /> : null}
+                      <span>{tag}</span>
+                    </span>
+                  );
+                })}
               </div>
-
-
             </article>
-
           ))}
-
-
         </div>
 
-
-
-
-        <button
-          className="project-slide-btn next"
-          onClick={() => handleSlide("next")}
-        >
-          ›
-        </button>
-
-
-
+        <div className="project-slider-controls">
+          <button
+            className="project-slide-btn prev"
+            onClick={() => handleSlide("prev")}
+            aria-label="Previous Project"
+          >
+            ‹
+          </button>
+          <button
+            className="project-slide-btn next"
+            onClick={() => handleSlide("next")}
+            aria-label="Next Project"
+          >
+            ›
+          </button>
+        </div>
       </div>
-
-
     </section>
 
   );

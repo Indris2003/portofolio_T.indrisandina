@@ -41,45 +41,82 @@ function Hero() {
   }, []);
 
   return (
-    <section className="hero-section" id="home" ref={heroRef}>
-      <div className="hero-visual">
-        <h1 className="hero-name">
-          {text}
-          <span className="typing-cursor">|</span>
-        </h1>
+    <section className="hero-section" id="about" ref={heroRef}>
+      <div id="home" className="hero-grid">
+        <div className="hero-copy">
+          <h1 className="hero-name">
+            {text}
+            <span className="typing-cursor">|</span>
+          </h1>
 
-        <p className="hero-tagline">
-          Backend Developer • Fullstack Web Development
-        </p>
+          <p className="hero-tagline">
+            Backend Developer • Fullstack Web Development
+          </p>
 
-        <img src={heroImg} alt="Foto T. Indris Andina" className="hero-photo" />
+          <div className="hero-about-body">
+            <p>
+              Informatics graduate from Universitas Syiah Kuala, focused on backend and fullstack web development.
+              I build scalable, secure web applications — from RESTful APIs and database design to server-side
+              architecture — with solid frontend skills to bring it all together.
+            </p>
+            <p>
+              Currently open to backend, fullstack, and web application opportunities where I can contribute to
+              real-world products, keep learning new technologies, and collaborate closely with cross-functional
+              teams to ship reliable software.
+            </p>
+          </div>
 
-        <div className="hero-actions">
-          <a
-            className="hero-btn hero-btn-primary"
-            href={cvFile}
-            download="Resume-T Indris Andina.pdf"
-          >
-            <svg
-              width="16"
-              height="16"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+          <div className="hero-actions">
+            <a
+              className="hero-btn hero-btn-primary"
+              href={cvFile}
+              download="Resume-T Indris Andina.pdf"
             >
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
-              <polyline points="7 10 12 15 17 10" />
-              <line x1="12" y1="15" x2="12" y2="3" />
-            </svg>
-            Download CV
-          </a>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                <polyline points="7 10 12 15 17 10" />
+                <line x1="12" y1="15" x2="12" y2="3" />
+              </svg>
+              Download CV
+            </a>
 
-          <a className="hero-btn hero-btn-secondary" href="#contact">
-            Contact Me
-          </a>
+            <a
+              className="hero-btn hero-btn-secondary"
+              href="#projects"
+              onClick={(e) => {
+                e.preventDefault()
+                document.querySelector('#projects')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+              }}
+            >
+              <span>View Projects</span>
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="m12 5 7 7-7 7" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div className="hero-visual">
+          <img src={heroImg} alt="Foto T. Indris Andina" className="hero-photo" />
         </div>
       </div>
     </section>
