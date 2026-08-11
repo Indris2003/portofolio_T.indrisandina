@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
-import heroImg from '../assets/indris-photo.png'
+import heroImg from '../assets/my-picture.jpeg'
 import cvFile from '../assets/Resume-T Indris Andina.pdf'
 
 function Hero() {
@@ -57,14 +57,12 @@ function Hero() {
           </h1>
 
           <p className="hero-tagline">
-            Software Developer | Specific in Web & App Development
+            Software Developer | Specializing in Web & App Development
           </p>
 
           <div className="hero-about-body">
             <p>
-              Informatics graduate from Universitas Syiah Kuala, focused on backend and fullstack web development.
-              I build scalable, secure web applications — from RESTful APIs and database design to server-side
-              architecture — with solid frontend skills to bring it all together.
+              Informatics graduate from Universitas Syiah Kuala, focused on backend and fullstack development. I build secure, well-tested APIs and server-side architecture — from database design to concurrency-safe booking systems — backed by solid frontend skills to bring products together end to end.
             </p>
             <p>
               Currently open to backend, fullstack, and web application opportunities where I can contribute to
@@ -93,7 +91,7 @@ function Hero() {
                 <polyline points="7 10 12 15 17 10" />
                 <line x1="12" y1="15" x2="12" y2="3" />
               </svg>
-              Download CV
+              <span>Download CV</span>
             </a>
 
             <a

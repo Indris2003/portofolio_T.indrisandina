@@ -4,6 +4,7 @@ import { FaBars, FaXmark } from 'react-icons/fa6'
 const navLinks = [
   { label: 'Experience', href: '#experience' },
   { label: 'Skills', href: '#skills' },
+  { label: 'Certificates', href: '#certificates' },
   { label: 'Projects', href: '#projects' },
   { label: 'Contact', href: '#contact' },
 ]

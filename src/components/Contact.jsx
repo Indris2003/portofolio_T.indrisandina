@@ -85,7 +85,7 @@ function Contact() {
   }
 
   return (
-    <section className="content-section contact-section" id="contact">
+    <section className="content-section section-dark contact-section" id="contact">
       <div className="section-heading">
         <span className="section-page-badge">CONTACT</span>
         <h2>Let’s Build Something Meaningful</h2>
