@@ -6,7 +6,9 @@
 
 /* ===== TOPBAR (CV badge + Navbar pill) ===== */
 .topbar {
-  position: relative;
+  position: sticky;
+  top: 12px;
+  z-index: 1000;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1691,13 +1693,20 @@ body.modal-open .scroll-to-top-btn {
 /* ============ MEDIA QUERIES ============ */
 @media (max-width: 768px) {
   .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 100%;
-    position: relative;
-    margin-bottom: 8px;
-    padding: 0;
+    margin: 0;
+    padding: 12px 20px;
+    background: #fafafa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
   }
 
   .status-badge-desktop {
@@ -1752,89 +1761,63 @@ body.modal-open .scroll-to-top-btn {
     background: #27272a;
   }
 
-  /* ===== MOBILE SIDEBAR DRAWER ===== */
+  /* ===== MOBILE ULTRA-SIMPEL & ELEGAN FLOATING MENU ===== */
   .nav-sidebar {
     position: fixed;
-    top: 0;
-    right: 0;
-    width: min(290px, 82vw);
-    height: 100vh;
-    height: 100dvh;
+    top: 56px;
+    right: 16px;
+    width: calc(100% - 32px);
+    max-width: 280px;
+    height: auto;
     background: #09090b;
-    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
     z-index: 99999;
     display: flex;
     flex-direction: column;
-    padding: 24px 20px;
-    box-shadow: none;
-    transform: translateX(100%);
-    transition: transform 350ms cubic-bezier(0.16, 1, 0.3, 1);
+    padding: 10px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.96);
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), opacity 180ms ease, visibility 180ms ease;
   }
 
   .nav-sidebar.is-open {
-    transform: translateX(0);
-  }
-
-  .sidebar-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-bottom: 16px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    margin-bottom: 24px;
-  }
-
-  .sidebar-title {
-    color: #ffffff;
-    font-size: 1.1rem;
-    font-weight: 700;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-  }
-
-  .sidebar-close-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.05);
-    color: #ffffff;
-    font-size: 1.1rem;
-    cursor: pointer;
-    transition: all 200ms ease;
-  }
-
-  .sidebar-close-btn:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: scale(1.05);
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
   }
 
   .sidebar-links {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 2px;
   }
 
-  .sidebar-links a {
+  .sidebar-link-item {
     display: flex;
     align-items: center;
-    padding: 14px 16px;
+    justify-content: flex-start;
+    padding: 11px 16px;
     border-radius: 12px;
-    color: rgba(255, 255, 255, 0.85);
-    font-size: 1.05rem;
-    font-weight: 600;
     background: transparent;
-    transition: all 200ms ease;
+    color: rgba(255, 255, 255, 0.85);
+    font-size: 0.94rem;
+    font-weight: 500;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: background 180ms ease, color 180ms ease, transform 180ms ease;
   }
 
-  .sidebar-links a:hover,
-  .sidebar-links a:focus-visible {
+  .sidebar-link-item:hover,
+  .sidebar-link-item:active {
+    background: rgba(255, 255, 255, 0.12);
     color: #ffffff;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateX(4px);
+    font-weight: 600;
+    transform: translateX(3px);
   }
 
   .about-grid,
@@ -1882,7 +1865,7 @@ body.modal-open .scroll-to-top-btn {
 @media (max-width: 768px) {
   .portfolio-shell {
     width: min(100% - 24px, 1180px);
-    padding: 12px 0 32px;
+    padding: 68px 0 32px;
   }
 
   .content-section {

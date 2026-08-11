@@ -1,99 +1,84 @@
-import { useState, useEffect } from 'react'
-import { FaBars, FaXmark } from 'react-icons/fa6'
+import { useState, useEffect } from "react";
+import { FaBars, FaXmark } from "react-icons/fa6";
 
 const navLinks = [
-  { label: 'Experience', href: '#experience' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Certificates', href: '#certificates' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Contact', href: '#contact' },
-]
+  { label: "Home", href: "#home" },
+  { label: "Experience", href: "#experience" },
+  { label: "Technical Skills", href: "#skills" },
+  { label: "Certificates", href: "#certificates" },
+  { label: "Featured Projects", href: "#projects" },
+  { label: "Contact", href: "#contact" },
+];
 
 function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleScroll = (e, href) => {
-    e.preventDefault()
-    setIsOpen(false)
+    e.preventDefault();
+    setIsOpen(false);
 
-    const targetElement = document.querySelector(href)
+    if (href === "#home") {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
+    const targetElement = document.querySelector(href);
     if (targetElement) {
       targetElement.scrollIntoView({
-        behavior: 'smooth',
-        block: 'start',
-      })
+        behavior: "smooth",
+        block: "start",
+      });
     }
-  }
-
-  useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth > 768) {
-        setIsOpen(false)
-      }
-    }
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+  };
 
   useEffect(() => {
     if (isOpen) {
-      document.body.style.overflow = 'hidden'
+      document.body.style.overflow = "hidden";
     } else {
-      document.body.style.overflow = 'unset'
+      document.body.style.overflow = "unset";
     }
-    return () => {
-      document.body.style.overflow = 'unset'
-    }
-  }, [isOpen])
+  }, [isOpen]);
 
   return (
-    <div className="topbar">
-      {/* Desktop Navbar */}
-      <header className="navbar">
-        <nav aria-label="Primary navigation" className="nav-links">
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              onClick={(e) => handleScroll(e, link.href)}
-            >
-              {link.label}
-            </a>
-          ))}
-        </nav>
-      </header>
+    <>
+      <div className="topbar">
+        {/* Desktop Navbar */}
+        <header className="navbar">
+          <nav aria-label="Primary navigation" className="nav-links">
+            {navLinks.map((link) => (
+              <a
+                key={link.href}
+                href={link.href}
+                onClick={(e) => handleScroll(e, link.href)}
+              >
+                {link.label}
+              </a>
+            ))}
+          </nav>
+        </header>
 
-      {/* Mobile Topbar Brand Title */}
-      <span className="mobile-brand-title">Portfolio</span>
+        {/* Mobile Topbar Brand Title */}
+        <span className="mobile-brand-title">Portfolio</span>
 
-      {/* Mobile Right-aligned Hamburger Toggle Button */}
-      <button
-        className="hamburger-btn"
-        onClick={() => setIsOpen(true)}
-        aria-label="Open Navigation Menu"
-        aria-expanded={isOpen}
-      >
-        <FaBars />
-      </button>
+        {/* Mobile Right-aligned Hamburger Toggle Button */}
+        <button
+          className="hamburger-btn"
+          onClick={() => setIsOpen(!isOpen)}
+          aria-label="Toggle Navigation Menu"
+          aria-expanded={isOpen}
+        >
+          {isOpen ? <FaXmark /> : <FaBars />}
+        </button>
+      </div>
 
-      {/* Mobile Slide-in Sidebar Drawer */}
-      <aside className={`nav-sidebar ${isOpen ? 'is-open' : ''}`}>
-        <div className="sidebar-header">
-          <span className="sidebar-title">Menu</span>
-          <button
-            className="sidebar-close-btn"
-            onClick={() => setIsOpen(false)}
-            aria-label="Close Navigation Menu"
-          >
-            <FaXmark />
-          </button>
-        </div>
-
+      {/* Mobile Ultra-Simpel & Elegan Floating Menu Sheet */}
+      <aside className={`nav-sidebar ${isOpen ? "is-open" : ""}`}>
         <nav aria-label="Mobile navigation" className="sidebar-links">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
+              className="sidebar-link-item"
               onClick={(e) => handleScroll(e, link.href)}
             >
               {link.label}
@@ -103,9 +88,11 @@ function Navbar() {
       </aside>
 
       {/* Backdrop Overlay */}
-      {isOpen && <div className="nav-overlay" onClick={() => setIsOpen(false)} />}
-    </div>
-  )
+      {isOpen && (
+        <div className="nav-overlay" onClick={() => setIsOpen(false)} />
+      )}
+    </>
+  );
 }
 
-export default Navbar
+export default Navbar;
