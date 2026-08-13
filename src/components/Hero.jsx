@@ -4,16 +4,24 @@ import cvFile from '../assets/Resume-T Indris Andina.pdf'
 
 function Hero() {
   const [text, setText] = useState('')
+  const [isTypingComplete, setIsTypingComplete] = useState(false)
   const fullText = 'T. Indris Andina'
   const heroRef = useRef(null)
 
   useEffect(() => {
     let timeoutId;
+    let finishTimeoutId;
 
     const typeWriter = (textToType, index = 0) => {
       if (index <= textToType.length) {
         setText(textToType.slice(0, index));
-        timeoutId = setTimeout(() => typeWriter(textToType, index + 1), 150);
+        if (index === textToType.length) {
+          finishTimeoutId = setTimeout(() => {
+            setIsTypingComplete(true);
+          }, 1200);
+        } else {
+          timeoutId = setTimeout(() => typeWriter(textToType, index + 1), 120);
+        }
       }
     };
 
@@ -21,13 +29,16 @@ function Hero() {
       ([entry]) => {
         if (entry.isIntersecting) {
           setText('');
+          setIsTypingComplete(false);
           clearTimeout(timeoutId);
+          clearTimeout(finishTimeoutId);
           typeWriter(fullText);
         } else {
           clearTimeout(timeoutId);
+          clearTimeout(finishTimeoutId);
         }
       },
-      { threshold: 0.5 }
+      { threshold: 0.2 }
     );
 
     if (heroRef.current) {
@@ -36,6 +47,7 @@ function Hero() {
 
     return () => {
       clearTimeout(timeoutId);
+      clearTimeout(finishTimeoutId);
       if (heroRef.current) observer.unobserve(heroRef.current);
     };
   }, []);
@@ -53,21 +65,17 @@ function Hero() {
         <div className="hero-copy">
           <h1 className="hero-name">
             {text}
-            <span className="typing-cursor">|</span>
+            <span className={`typing-cursor ${isTypingComplete ? 'hide' : ''}`}>|</span>
           </h1>
 
-          <p className="hero-tagline">
-            Software Developer | Specializing in Web & App Development
-          </p>
+          <div className="hero-tagline">
+            <span className="hero-tagline-title">Software Developer</span>
+            <span className="hero-tagline-sub">Specializing in Web & App Development</span>
+          </div>
 
           <div className="hero-about-body">
             <p>
-              Informatics graduate from Universitas Syiah Kuala, focused on backend and fullstack development. I build secure, well-tested APIs and server-side architecture — from database design to concurrency-safe booking systems — backed by solid frontend skills to bring products together end to end.
-            </p>
-            <p>
-              Currently open to backend, fullstack, and web application opportunities where I can contribute to
-              real-world products, keep learning new technologies, and collaborate closely with cross-functional
-              teams to ship reliable software.
+              Informatics graduate from Universitas Syiah Kuala focused on backend and fullstack development. I build secure, well-tested APIs and server-side architecture — from database design to concurrency-safe booking systems — while collaborating with cross-functional teams to ship reliable end-to-end software.
             </p>
           </div>
 

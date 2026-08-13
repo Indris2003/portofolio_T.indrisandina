@@ -9,24 +9,36 @@ const contactLinks = [
     href: 'https://wa.me/+6282163156292',
     icon: FaWhatsapp,
     subLabel: 'Chat with me',
+    color: '#25D366',
+    bgColor: 'rgba(37, 211, 102, 0.15)',
+    borderColor: 'rgba(37, 211, 102, 0.35)',
   },
   {
     label: 'Email',
     href: 'mailto:indris2003@gmail.com',
     icon: FaEnvelope,
     subLabel: 'Send a message',
+    color: '#EA4335',
+    bgColor: 'rgba(234, 67, 53, 0.15)',
+    borderColor: 'rgba(234, 67, 53, 0.35)',
   },
   {
     label: 'LinkedIn',
     href: 'https://www.linkedin.com/in/teukuindrisandina',
     icon: FaLinkedinIn,
     subLabel: 'Connect professionally',
+    color: '#0A66C2',
+    bgColor: 'rgba(10, 102, 194, 0.18)',
+    borderColor: 'rgba(10, 102, 194, 0.35)',
   },
   {
     label: 'GitHub',
     href: 'https://github.com/Indris2003',
     icon: FaGithub,
     subLabel: 'Explore my code',
+    color: '#FFFFFF',
+    bgColor: 'rgba(255, 255, 255, 0.12)',
+    borderColor: 'rgba(255, 255, 255, 0.25)',
   },
 ]
 
@@ -103,7 +115,16 @@ function Contact() {
               const Icon = contact.icon
               return (
                 <a className="contact-link" href={contact.href} key={contact.label} target="_blank" rel="noreferrer">
-                  <span className="contact-icon"><Icon aria-hidden="true" /></span>
+                  <span
+                    className="contact-icon"
+                    style={{
+                      backgroundColor: contact.bgColor,
+                      color: contact.color,
+                      border: `1px solid ${contact.borderColor}`,
+                    }}
+                  >
+                    <Icon aria-hidden="true" style={{ color: contact.color }} />
+                  </span>
                   <span className="contact-link-copy">
                     <strong>{contact.label}</strong>
                     <span>{contact.subLabel}</span>

@@ -60,6 +60,27 @@ const skillGroups = [
   },
 ];
 
+const skillBrandMap = {
+  "JavaScript": "#F7DF1E",
+  "TypeScript": "#3178C6",
+  "PHP": "#777BB4",
+  "Kotlin": "#7F52FF",
+  "HTML": "#E34F26",
+  "CSS": "#1572B6",
+  "Node.js": "#5FA04E",
+  "Express.js": "#18181B",
+  "RESTful APIs": "#0284C7",
+  "React.js": "#0088CC",
+  "Laravel": "#FF2D20",
+  "Bootstrap": "#7952B3",
+  "Tailwind CSS": "#06B6D4",
+  "MongoDB": "#47A248",
+  "PostgreSQL": "#4169E1",
+  "Git": "#F05032",
+  "GitHub": "#18181B",
+  "Postman": "#FF6C37",
+};
+
 function Skills() {
   return (
     <section className="content-section" id="skills">
@@ -76,10 +97,11 @@ function Skills() {
             <div className="skill-list">
               {group.items.map((skill) => {
                 const Icon = skill.icon;
+                const brandColor = skillBrandMap[skill.name] || "#09090b";
 
                 return (
                   <span key={skill.name} className="skill-pill">
-                    <Icon className="skill-pill-icon" size={18} />
+                    <Icon className="skill-pill-icon" size={19} style={{ color: brandColor }} />
                     <span>{skill.name}</span>
                   </span>
                 );

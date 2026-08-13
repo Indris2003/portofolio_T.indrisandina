@@ -2,11 +2,11 @@ import { useState, useEffect } from "react";
 import { FaBars, FaXmark } from "react-icons/fa6";
 
 const navLinks = [
-  { label: "Home", href: "#home" },
+  // { label: "Home", href: "#home" },
   { label: "Experience", href: "#experience" },
-  { label: "Technical Skills", href: "#skills" },
+  { label: "Skills", href: "#skills" },
   { label: "Certificates", href: "#certificates" },
-  { label: "Featured Projects", href: "#projects" },
+  { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
 ];
 
