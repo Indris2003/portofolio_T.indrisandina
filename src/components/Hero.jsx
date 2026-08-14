@@ -75,8 +75,9 @@ function Hero() {
 
           <div className="hero-about-body">
             <p>
-              Informatics graduate from Universitas Syiah Kuala focused on backend and fullstack development. I build secure, well-tested APIs and server-side architecture — from database design to concurrency-safe booking systems — while collaborating with cross-functional teams to ship reliable end-to-end software.
-            </p>
+              Informatics graduate from Universitas Syiah Kuala, focused on backend and fullstack web development.
+              I build secure, well-tested web applications — from RESTful APIs and database design to server-side
+              architecture — with a strong eye for clean, maintainable code. </p>
           </div>
 
           <div className="hero-actions">
