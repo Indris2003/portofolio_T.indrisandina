@@ -58,7 +58,7 @@ function Experience() {
                 {experience.points && experience.points.length > 0 && (
                   <ul>
                     {experience.points.map((point) => (
-                      <li key={point}>{point}</li>
+                      <li key={point}><span>{point}</span></li>
                     ))}
                   </ul>
                 )}

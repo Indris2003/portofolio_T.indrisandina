@@ -75,7 +75,7 @@ const projects = [
   {
     title: "Diaz Sport Center",
     description:
-      "Backend REST API untuk sistem pemesanan lapangan olahraga yang menggantikan proses manual berbasis WhatsApp di Diaz Sport Center. Dibangun dengan Express.js, MongoDB Atlas, dan Mongoose ODM, sistem ini menangani autentikasi multi-role, mekanisme concurrency control untuk mencegah double-booking, serta alur pembayaran end-to-end. Diuji dengan 39 endpoint API dan performance testing hingga 100 concurrent users dengan error rate hanya 0.15%.",
+      "A Backend REST API for a sports venue booking system replacing manual WhatsApp workflows at Diaz Sport Center. Built using Express.js, MongoDB Atlas, and Mongoose ODM, the system handles multi-role authentication, concurrency control to prevent double bookings, and end-to-end payment flows. Thoroughly tested with 39 API endpoints and stress-tested up to 100 concurrent users with a 0.15% error rate.",
     image: diazSportImage,
     demo: "https://tugasakhir-chi.vercel.app/",
     tags: ["MongoDB", "Express.js", "React.js", "Node.js"],
@@ -83,7 +83,7 @@ const projects = [
   {
     title: "Si-Pidana-Q",
     description:
-      "Sistem Informasi Kasus Qanun Terintegrasi yang dikembangkan untuk Satpol PP & WH Kota Banda Aceh. Aplikasi berbasis Google Apps Script dan Google Workspace Infrastructure ini memfasilitasi pencatatan digital kasus pelanggaran Qanun, pengarsipan dokumen barang bukti ke Google Drive, serta rekapitulasi data pelanggaran secara otomatis dan real-time dalam Google Spreadsheet.",
+      "An Integrated Qanun Case Information System developed for the Sharia Police & Public Order Agency (Satpol PP & WH) of Banda Aceh City. Built on Google Apps Script and Google Workspace Infrastructure, the application digitizes Qanun violation records, automates evidence archiving to Google Drive, and generates real-time data summaries in Google Sheets.",
     image: sipidanaImage,
     demo: "https://script.google.com/macros/s/AKfycbxqz9bk9fK5jFXsTxcKkNlut7eIZi6I9M3LYlj-1nAVIATi3LkR9CKmggUCVIZDyB-Z/exec",
     tags: ["Google Apps Script", "Google Spreadsheet", "Google Drive"],
@@ -91,14 +91,14 @@ const projects = [
   {
     title: "PPKS & TKSK",
     description:
-      "Sistem Layanan Persyaratan Kesejahteraan Sosial untuk Dinas Sosial Provinsi Aceh. Dirancang dengan arsitektur MERN Stack (MongoDB, Express.js, React.js, Node.js), sistem ini mengelola pengajuan bantuan bagi Pemerlu Pelayanan Kesejahteraan Sosial (PPKS) dan Tenaga Kesejahteraan Sosial Kecamatan (TKSK) melalui alur persetujuan multi-level, validasi dokumen digital, serta kontrol akses berbasis peran (RBAC).",
+      "A Social Welfare Requirement Service System developed for the Social Affairs Office of Aceh Province. Built using the MERN Stack (MongoDB, Express.js, React.js, Node.js), the system manages assistance applications for Social Welfare Recipients (PPKS) and District Social Welfare Personnel (TKSK) featuring multi-level approval workflows, digital document validation, and role-based access control (RBAC).",
     image: ppkstkImage,
     tags: ["MongoDB", "Express.js", "React.js", "Node.js"],
   },
   {
     title: "Semaroam",
     description:
-      "Aplikasi Mobile Rekomendasi Destinasi Wisata di Kota Semarang yang dikembangkan menggunakan bahasa Kotlin dan Android SDK. Berkolaborasi dalam tim pada program Bangkit Academy, aplikasi ini mengintegrasikan model Machine Learning untuk kategorisasi rekomendasi tempat wisata secara presisi, riwayat kunjungan, serta sistem rating interaktif bagi para wisatawan.",
+      "A Mobile Travel Recommendation App for Semarang City developed using Kotlin and the Android SDK. Created collaboratively in a team project during the Bangkit Academy program, the app integrates Machine Learning models for precise tourist spot categorization, visit history tracking, and interactive ratings for travelers.",
     image: semaroamImage,
     tags: ["Android", "Kotlin"],
   },
@@ -156,7 +156,7 @@ function ProjectCard({ project }) {
             className="project-read-more-btn"
             onClick={() => setIsExpanded(!isExpanded)}
           >
-            <span>{isExpanded ? "Lihat Lebih Sedikit" : "Lihat Selengkapnya"}</span>
+            <span>{isExpanded ? "Show Less" : "Read More"}</span>
             {isExpanded ? <TbChevronUp size={14} /> : <TbChevronDown size={14} />}
           </button>
         )}

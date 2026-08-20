@@ -1,0 +1,148 @@
+.portfolio-shell {
+  width: min(1180px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+:root {
+  --tabs-dur: 250ms;
+  --tabs-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --tabs-text-muted: rgba(193, 193, 193, 0.8);
+  --tabs-text-active: #ffffff;
+  --tabs-bar-bg: #202020;
+  --tabs-pill-bg: #454545;
+}
+
+/* ===== GENERAL SECTION STYLES ===== */
+.content-section {
+  margin-top: 48px;
+  min-height: max(560px, calc(100vh - 150px));
+  padding: 52px 56px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: #ffffff;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.03);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: box-shadow 300ms ease, border-color 300ms ease;
+}
+
+/* Alternating Dark Section */
+.content-section.section-dark {
+  background: linear-gradient(180deg, #09090b 0%, #111115 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #a1a1aa;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.35);
+}
+
+.content-section.section-dark .section-heading h2 {
+  color: #ffffff;
+}
+
+.section-heading {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 28px;
+}
+
+.section-page-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  width: fit-content;
+  margin-bottom: 4px;
+  background: #f4f4f5;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: #09090b;
+}
+
+.section-dark .section-page-badge {
+  background: #27272a;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+}
+
+.section-heading h2 {
+  font-size: clamp(1.7rem, 3vw, 2.6rem);
+}
+
+/* ===== GENERAL BUTTON UTILITIES ===== */
+.nav-cta,
+.nav-download,
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-weight: 600;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background 180ms ease;
+}
+
+.nav-cta {
+  padding: 12px 18px;
+  background: #09090b;
+  color: #ffffff;
+  font-weight: 700;
+  box-shadow: none;
+}
+
+.nav-download {
+  padding: 12px 18px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  color: var(--text-strong);
+  background: #ffffff;
+}
+
+.nav-cta:hover,
+.nav-cta:focus-visible {
+  transform: translateY(-2px);
+  background: #27272a;
+  box-shadow: none;
+}
+
+.nav-download:hover,
+.nav-download:focus-visible,
+.button:hover,
+.button:focus-visible {
+  transform: translateY(-2px);
+}
+
+/* Base Responsive Layout Overrides */
+@media (max-width: 768px) {
+  .portfolio-shell {
+    width: min(100% - 24px, 1180px);
+    padding: 68px 0 32px;
+  }
+
+  .content-section {
+    min-height: auto;
+    margin-top: 24px;
+    padding: 32px 22px;
+    border-radius: var(--radius-md, 20px);
+  }
+
+  .section-heading {
+    gap: 6px;
+    margin-bottom: 22px;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(1.45rem, 5.5vw, 1.85rem);
+    letter-spacing: -0.01em;
+  }
+}
+
+@media (max-width: 640px) {
+  .content-section {
+    padding: 24px 18px;
+  }
+}

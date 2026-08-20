@@ -1,0 +1,303 @@
+/* ===== TOPBAR (CV badge + Navbar pill) ===== */
+.topbar {
+  position: sticky;
+  top: 12px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 28px;
+}
+
+.navbar {
+  position: sticky;
+  top: 16px;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+  width: fit-content;
+  max-width: calc(100% - 32px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 999px;
+  background: var(--tabs-bar-bg);
+  backdrop-filter: blur(20px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+.t-tabs {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px;
+  border-radius: 48px;
+  background: transparent;
+}
+
+.t-tab {
+  position: relative;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  height: 34px;
+  padding: 6px 16px;
+  color: var(--tabs-text-muted);
+  font-size: 0.92rem;
+  font-weight: 500;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 48px;
+  z-index: 1;
+  transition: color var(--tabs-dur) var(--tabs-ease);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+.t-tab:not([aria-selected="true"]):hover,
+.t-tab[aria-selected="true"] {
+  color: var(--tabs-text-active);
+}
+
+.t-tabs-pill {
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 34px;
+  width: 0;
+  background: var(--tabs-pill-bg);
+  border-radius: 48px;
+  transform: translateX(0);
+  transition:
+    transform var(--tabs-dur) var(--tabs-ease),
+    width var(--tabs-dur) var(--tabs-ease);
+  will-change: transform, width;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .t-tabs-pill,
+  .t-tab {
+    transition: none !important;
+  }
+}
+
+.mobile-brand-title {
+  display: none;
+}
+
+.hamburger-btn {
+  display: none;
+}
+
+.nav-sidebar {
+  display: none;
+}
+
+.nav-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(6px);
+  z-index: 99998;
+}
+
+.cv-badge {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 99px;
+  width: fit-content;
+  padding: 12px 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: #09090b;
+  backdrop-filter: blur(20px);
+  box-shadow: none;
+  color: #ffffff;
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-transform: none;
+  cursor: pointer;
+  transition:
+    transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 220ms ease,
+    background 220ms ease;
+}
+
+.cv-badge:hover,
+.cv-badge:focus-visible {
+  transform: translateY(-50%) translateY(-2px);
+  border-color: rgba(255, 255, 255, 0.4);
+  background: #18181b;
+  box-shadow: none;
+}
+
+.cv-badge-icon {
+  flex-shrink: 0;
+  color: #ffffff;
+}
+
+/* Mobile Navbar & Floating Sidebar */
+@media (max-width: 768px) {
+  .topbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 10000;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 12px 20px;
+    background: #fafafa;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    box-sizing: border-box;
+  }
+
+  .status-badge-desktop {
+    display: none;
+  }
+
+  .mobile-brand-title {
+    display: flex;
+    align-items: center;
+    height: 44px;
+    color: #09090b;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1;
+    font-family: var(--sans);
+  }
+
+  .navbar {
+    display: none;
+  }
+
+  .hamburger-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    background: #09090b;
+    color: #ffffff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: none;
+    margin-left: 0;
+    transition: transform 200ms ease, background 200ms ease;
+  }
+
+  .hamburger-btn:hover {
+    transform: translateY(-2px);
+    background: #27272a;
+  }
+
+  .nav-sidebar {
+    position: fixed;
+    top: 64px;
+    right: 16px;
+    width: calc(100% - 32px);
+    max-width: 280px;
+    height: auto;
+    background: #09090b;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 20px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.4);
+    z-index: 99999;
+    display: flex;
+    flex-direction: column;
+    padding: 8px;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: translateY(-10px) scale(0.96);
+    transition: transform 220ms cubic-bezier(0.16, 1, 0.3, 1), opacity 180ms ease, visibility 180ms ease;
+  }
+
+  .nav-sidebar.is-open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+  }
+
+  .sidebar-links {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .t-tabs-vertical {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 4px;
+    width: 100%;
+    border-radius: 16px;
+    background: transparent;
+  }
+
+  .t-tabs-pill.mobile-pill {
+    position: absolute;
+    left: 4px;
+    top: 0;
+    width: calc(100% - 8px);
+    background: var(--tabs-pill-bg);
+    border-radius: 12px;
+    transition: transform var(--tabs-dur) var(--tabs-ease), height var(--tabs-dur) var(--tabs-ease);
+    will-change: transform, height;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .sidebar-link-item.t-tab {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0 16px;
+    border-radius: 12px;
+    font-size: 0.94rem;
+    font-weight: 500;
+    font-family: inherit;
+    background: transparent;
+    border: 0;
+    color: var(--tabs-text-muted);
+    cursor: pointer;
+    transition: color var(--tabs-dur) var(--tabs-ease);
+  }
+
+  .sidebar-link-item.t-tab:not([aria-selected="true"]):hover,
+  .sidebar-link-item.t-tab[aria-selected="true"] {
+    color: var(--tabs-text-active);
+  }
+}
+
+@media (max-width: 420px) {
+  .mobile-brand-title {
+    font-size: 1.25rem;
+  }
+}

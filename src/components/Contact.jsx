@@ -1,18 +1,9 @@
 import { useRef, useState, useEffect } from 'react'
-import { createPortal } from 'react-dom' // 1. IMPORT CREATE PORTAL DI SINI
+import { createPortal } from 'react-dom'
 import emailjs from '@emailjs/browser'
-import { FaEnvelope, FaGithub, FaLinkedinIn, FaPaperPlane, FaSpinner, FaWhatsapp, FaXmark } from 'react-icons/fa6'
+import { FaEnvelope, FaGithub, FaLinkedinIn, FaPaperPlane, FaSpinner, FaXmark } from 'react-icons/fa6'
 
 const contactLinks = [
-  {
-    label: 'WhatsApp',
-    href: 'https://wa.me/+6282163156292',
-    icon: FaWhatsapp,
-    subLabel: 'Chat with me',
-    color: '#25D366',
-    bgColor: 'rgba(37, 211, 102, 0.15)',
-    borderColor: 'rgba(37, 211, 102, 0.35)',
-  },
   {
     label: 'Email',
     href: 'mailto:indris2003@gmail.com',
@@ -92,7 +83,7 @@ function Contact() {
 
     } catch {
       setStatus('error')
-      setMessage('Gagal mengirim pesan. Coba lagi atau hubungi lewat WhatsApp.')
+      setMessage('Gagal mengirim pesan. Coba lagi atau kirim via Email.')
     }
   }
 
@@ -135,14 +126,14 @@ function Contact() {
           </div>
         </div>
 
-        <div className="contact-panel" style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '16px', textAlign: 'center' }}>
-          <h3 style={{ margin: 0, fontSize: '1.4rem', color: 'var(--text-strong)' }}>Have a project in mind?</h3>
-          <p style={{ margin: 0, color: 'var(--muted)' }}>Send me a direct message and let's discuss it.</p>
+        <div className="contact-panel contact-panel-cta">
+          <h3 className="contact-cta-title">Have a project in mind?</h3>
+          <p className="contact-cta-desc">Send me a direct message and let's discuss it.</p>
           
           <button 
-            className="nav-cta" 
+            type="button"
+            className="nav-cta contact-open-modal-btn" 
             onClick={() => setShowForm(true)} 
-            style={{ marginTop: '16px', cursor: 'pointer', border: 'none', width: 'fit-content', padding: '14px 36px' }}
           >
             <FaEnvelope style={{ marginRight: '8px' }} /> Contact Me
           </button>
@@ -155,7 +146,7 @@ function Contact() {
           <div className="modal-content" onClick={(e) => e.stopPropagation()}>
             <div className="modal-header">
               <h3>Send a Message</h3>
-              <button className="close-modal-btn" onClick={() => setShowForm(false)}>
+              <button type="button" className="close-modal-btn" onClick={() => setShowForm(false)}>
                 <FaXmark />
               </button>
             </div>
@@ -182,15 +173,15 @@ function Contact() {
                 <textarea name="message" rows="5" placeholder="Write your message here..." required />
               </label>
 
-              <div style={{ display: 'flex', alignItems: 'center', gap: '16px', marginTop: '8px' }}>
+              <div className="contact-form-actions">
                 <button className="button button-primary contact-submit" type="submit" disabled={status === 'loading'}>
                   {status === 'loading' ? <FaSpinner className="spin" aria-hidden="true" /> : <FaPaperPlane aria-hidden="true" />}
-                  {status === 'loading' ? 'Sending...' : 'Send Message'}
+                  <span>{status === 'loading' ? 'Sending...' : 'Send Message'}</span>
                 </button>
                 <button 
                   type="button" 
                   onClick={() => setShowForm(false)} 
-                  style={{ background: 'none', border: 'none', color: 'var(--muted)', cursor: 'pointer', fontWeight: '600' }}
+                  className="contact-cancel-btn"
                 >
                   Cancel
                 </button>

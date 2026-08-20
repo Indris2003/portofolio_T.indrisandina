@@ -152,6 +152,30 @@ function Navbar() {
     }
   };
 
+  const [isOverDark, setIsOverDark] = useState(false);
+
+  // Check if topbar is floating over a dark section (.section-dark)
+  useEffect(() => {
+    const handleCheckDarkOver = () => {
+      const darkSections = document.querySelectorAll(".section-dark");
+      if (darkSections.length === 0) return;
+
+      const isOver = Array.from(darkSections).some((el) => {
+        const rect = el.getBoundingClientRect();
+        return rect.top <= 75 && rect.bottom >= 45;
+      });
+
+      setIsOverDark(isOver);
+    };
+
+    window.addEventListener("scroll", handleCheckDarkOver, { passive: true });
+    handleCheckDarkOver();
+
+    return () => {
+      window.removeEventListener("scroll", handleCheckDarkOver);
+    };
+  }, []);
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -162,7 +186,15 @@ function Navbar() {
 
   return (
     <>
-      <div className="topbar">
+      <div className={`topbar ${isOverDark ? "is-over-dark" : ""}`}>
+        {/* Desktop Left-aligned Available Status Badge */}
+        <div className="status-badge-hero-top">
+          <span className="status-badge-floating">
+            <span className="status-dot" />
+            <span>Available for Opportunities</span>
+          </span>
+        </div>
+
         {/* Desktop Navbar */}
         <header className="navbar">
           <div className="t-tabs" role="tablist">
@@ -178,7 +210,7 @@ function Navbar() {
                   aria-selected={isSelected}
                   onClick={(e) => handleScroll(e, link.href)}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
                 </button>
               );
             })}
@@ -219,7 +251,7 @@ function Navbar() {
                   aria-selected={isSelected}
                   onClick={(e) => handleScroll(e, link.href)}
                 >
-                  {link.label}
+                  <span>{link.label}</span>
                 </button>
               );
             })}
